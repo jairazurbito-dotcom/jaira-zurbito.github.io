@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jaira Zurbito — Customer Experience & Digital Marketing Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAF6EF;
+    --bg-card: #FFFFFF;
+    --ink: #1F1B16;
+    --muted: #6F6A62;
+    --accent: #C76A3B;
+    --accent-soft: #F2E2D2;
+    --line: #E6DFD3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; line-height: 1.2; letter-spacing: -0.01em; }
+
+  /* Layout */
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 32px; }
+  section { padding: 96px 0; border-bottom: 1px solid var(--line); }
+  section:last-of-type { border-bottom: none; }
+
+  /* Nav */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 246, 239, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--line);
+    padding: 16px 0;
+  }
+  nav .container { display: flex; justify-content: space-between; align-items: center; }
+  nav .name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 18px; }
+  nav ul { display: flex; gap: 32px; list-style: none; }
+  nav a { color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 500; transition: color 0.2s; }
+  nav a:hover { color: var(--accent); }
+
+  /* Hero */
+  .hero { padding: 120px 0 80px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 13px; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+  }
+  .hero h1 { font-size: clamp(40px, 6vw, 72px); margin-bottom: 24px; }
+  .hero .tagline { font-size: 20px; color: var(--muted); max-width: 640px; margin-bottom: 40px; }
+  .hero-meta { display: flex; flex-wrap: wrap; gap: 24px; font-size: 14px; color: var(--muted); }
+  .hero-meta a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); transition: border-color 0.2s; }
+  .hero-meta a:hover { border-color: var(--accent); }
+
+  /* Section heads */
+  .section-head { margin-bottom: 56px; max-width: 720px; }
+  .section-head h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 16px; }
+  .section-head p { color: var(--muted); font-size: 17px; }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  .about-text p { margin-bottom: 18px; font-size: 16px; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .stat {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 24px;
+  }
+  .stat .num { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 600; color: var(--accent); }
+  .stat .label { font-size: 13px; color: var(--muted); margin-top: 6px; }
+
+  /* Expertise */
+  .expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .pillar {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 32px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pillar:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(31, 27, 22, 0.06); }
+  .pillar .icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--accent-soft); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    font-family: 'Fraunces', serif; font-size: 20px; font-weight: 600;
+  }
+  .pillar h3 { font-size: 22px; margin-bottom: 12px; }
+  .pillar p { font-size: 15px; color: var(--muted); margin-bottom: 16px; }
+  .pillar .tools { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 100px;
+    font-size: 12px; color: var(--muted);
+  }
+
+  /* Work */
+  .work-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .project {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .project:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(31, 27, 22, 0.08); }
+  .project-cover {
+    height: 180px;
+    background: linear-gradient(135deg, var(--accent-soft) 0%, #F8E8D8 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Fraunces', serif; font-size: 32px; font-weight: 600; color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+  .project.alt .project-cover { background: linear-gradient(135deg, #E8E4D8 0%, #DCD4C2 100%); color: #6B5D45; }
+  .project.alt2 .project-cover { background: linear-gradient(135deg, #D8E2DC 0%, #C6D5CC 100%); color: #4F6B5C; }
+  .project.alt3 .project-cover { background: linear-gradient(135deg, #E8DCD8 0%, #D8C2BD 100%); color: #8B5A48; }
+  .project-body { padding: 24px 28px 28px; }
+  .project .scope { font-size: 12px; color: var(--accent); font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 8px; }
+  .project h3 { font-size: 22px; margin-bottom: 10px; }
+  .project p { font-size: 15px; color: var(--muted); margin-bottom: 16px; }
+  .project .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+
+  /* Languages & Tools */
+  .lang-tools { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .lang-tools h3 { font-size: 22px; margin-bottom: 20px; }
+  .lang-list { display: flex; flex-direction: column; gap: 14px; }
+  .lang-row { display: flex; justify-content: space-between; align-items: center; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+  .lang-row:last-child { border-bottom: none; }
+  .lang-row .lvl { font-size: 13px; color: var(--muted); }
+  .tools-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  /* Contact */
+  .contact { text-align: center; }
+  .contact h2 { font-size: clamp(32px, 5vw, 48px); margin-bottom: 20px; }
+  .contact p { color: var(--muted); font-size: 17px; max-width: 480px; margin: 0 auto 32px; }
+  .contact-buttons { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 14px 28px;
+    border-radius: 100px;
+    font-size: 15px; font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary { background: var(--ink); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent); }
+  .btn-secondary { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+  .btn-secondary:hover { background: var(--ink); color: var(--bg); }
+
+  /* Footer */
+  footer { padding: 32px 0; text-align: center; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    section { padding: 64px 0; }
+    .container { padding: 0 24px; }
+    nav ul { gap: 20px; }
+    nav a { font-size: 13px; }
+    .hero { padding: 80px 0 60px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .expertise-grid { grid-template-columns: 1fr; gap: 16px; }
+    .work-grid { grid-template-columns: 1fr; gap: 20px; }
+    .lang-tools { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container">
+    <div class="name">Jaira Zurbito</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#expertise">Expertise</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero container">
+  <span class="eyebrow">Barcelona, Spain</span>
+  <h1>Customer Experience &amp; Digital Marketing.</h1>
+  <p class="tagline">Bilingual professional with seven-plus years building customer-first experiences and growing brands across e-commerce, B2B FMCG, and SaaS. Currently completing a Master of Digital Marketing in Barcelona.</p>
+  <div class="hero-meta">
+    <span><a href="mailto:jaira.zurbito@gmail.com">jaira.zurbito@gmail.com</a></span>
+    <span>+34 613 747 029</span>
+    <span><a href="https://www.linkedin.com/in/jaira-zurbito-6a9433342/" target="_blank" rel="noopener">linkedin.com/in/jaira-zurbito</a></span>
+  </div>
+</header>
+
+<section id="about">
+  <div class="container">
+    <div class="section-head">
+      <h2>About</h2>
+      <p>The short version of how I got here, and what I do best.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I started in global BPO customer service in the Philippines, learning how to handle hundreds of conversations a day under brand and SLA standards. From there I moved to Dubai, where I spent nearly three years at Merisant Company supporting B2B sales, trade marketing, and distributor relationships across the GCC region.</p>
+        <p>Since 2023, I have worked as a remote freelancer for DTC e-commerce, eco-conscious consumer goods, and B2B SaaS brands, owning end-to-end customer support and social media. Today I lead bilingual social strategy for Edunakho Group and Vertical Freediving in Barcelona while completing my master's in Digital Marketing.</p>
+        <p>My sweet spot is hybrid roles where customer experience depth and digital marketing curiosity both matter, and where I can keep growing the marketing side of my craft.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat">
+          <div class="num">7+</div>
+          <div class="label">Years of professional experience</div>
+        </div>
+        <div class="stat">
+          <div class="num">4</div>
+          <div class="label">Countries lived or worked in</div>
+        </div>
+        <div class="stat">
+          <div class="num">8+</div>
+          <div class="label">Brands and clients served</div>
+        </div>
+        <div class="stat">
+          <div class="num">3</div>
+          <div class="label">Languages spoken</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="container">
+    <div class="section-head">
+      <h2>What I do</h2>
+      <p>Three core areas where my experience runs deepest.</p>
+    </div>
+    <div class="expertise-grid">
+      <div class="pillar">
+        <div class="icon">CX</div>
+        <h3>Customer Experience</h3>
+        <p>High-volume support across email, social DMs, and tickets. Refunds, returns, escalations, macro libraries, help-centre FAQs, and turning customer signal into product and marketing insight.</p>
+        <div class="tools">
+          <span class="tag">Gorgias</span>
+          <span class="tag">Shopify</span>
+          <span class="tag">Klaviyo</span>
+          <span class="tag">HubSpot</span>
+          <span class="tag">Amadeus GDS</span>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="icon">DM</div>
+        <h3>Digital Marketing</h3>
+        <p>Bilingual social strategy across Instagram, LinkedIn, and TikTok. Content calendars, founder-led thought leadership, influencer outreach, and translating performance data into clear monthly recommendations.</p>
+        <div class="tools">
+          <span class="tag">Meta Business Suite</span>
+          <span class="tag">Meta Ads</span>
+          <span class="tag">Mailchimp</span>
+          <span class="tag">LinkedIn</span>
+          <span class="tag">TikTok</span>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="icon">CR</div>
+        <h3>Content &amp; Copy</h3>
+        <p>Copywriting in English and Spanish, on-brand voice work across platforms, visual content with the Canva and CapCut stack, and producing assets that match the standards of larger creative studios.</p>
+        <div class="tools">
+          <span class="tag">Canva</span>
+          <span class="tag">CapCut</span>
+          <span class="tag">Figma</span>
+          <span class="tag">EN/ES copy</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work">
+  <div class="container">
+    <div class="section-head">
+      <h2>Selected work</h2>
+      <p>A snapshot of the brands and projects I have helped shape across freelance and in-house roles.</p>
+    </div>
+    <div class="work-grid">
+
+      <div class="project">
+        <div class="project-cover">Vertical Freediving</div>
+        <div class="project-body">
+          <div class="scope">Social Strategist, Freelance &middot; Barcelona</div>
+          <h3>Bilingual social strategy for an adventure sports school</h3>
+          <p>Leading Instagram, TikTok, and LinkedIn content for a Barcelona freediving school, building bilingual content calendars and translating performance data into monthly direction for the founder.</p>
+          <div class="tags">
+            <span class="tag">Strategy</span>
+            <span class="tag">Bilingual</span>
+            <span class="tag">Adventure sports</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project alt">
+        <div class="project-cover">Edunakho Group</div>
+        <div class="project-body">
+          <div class="scope">Social Strategist, Freelance &middot; Education</div>
+          <h3>LinkedIn-first content for an education brand</h3>
+          <p>Building voice, cadence, and content systems for an education-focused brand, with a focus on LinkedIn growth and founder-led content that opens conversations with the right audience.</p>
+          <div class="tags">
+            <span class="tag">LinkedIn</span>
+            <span class="tag">Founder content</span>
+            <span class="tag">Education</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project alt2">
+        <div class="project-cover">Scout Data</div>
+        <div class="project-body">
+          <div class="scope">Social Media &amp; EA, Freelance &middot; B2B SaaS</div>
+          <h3>LinkedIn pipeline channel for a B2B SaaS team</h3>
+          <p>Owned end-to-end LinkedIn presence as a primary inbound channel, producing founder-led content, thought-leadership posts, and targeted outreach, then reporting monthly on reach, engagement, and pipeline contribution.</p>
+          <div class="tags">
+            <span class="tag">B2B SaaS</span>
+            <span class="tag">Pipeline</span>
+            <span class="tag">Reporting</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project alt3">
+        <div class="project-cover">Kind Laundry</div>
+        <div class="project-body">
+          <div class="scope">Project Coordinator &amp; Social, Freelance &middot; DTC</div>
+          <h3>Influencer partnerships for an eco-conscious DTC brand</h3>
+          <p>Sourced, briefed, contracted, and reviewed influencer collaborations end-to-end. Coordinated with a creative studio to lift visual standards across Instagram and TikTok for an eco-conscious audience.</p>
+          <div class="tags">
+            <span class="tag">Influencer</span>
+            <span class="tag">DTC</span>
+            <span class="tag">Sustainability</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project">
+        <div class="project-cover">Flux Footwear</div>
+        <div class="project-body">
+          <div class="scope">CX &amp; Social, Freelance &middot; US DTC e-commerce</div>
+          <h3>High-volume customer experience for a US footwear brand</h3>
+          <p>Owned email, DM, and Gorgias ticket support for a US e-commerce footwear brand. Managed refunds, returns, and escalations using Shopify and Klaviyo, and maintained the macro library and help-centre FAQs.</p>
+          <div class="tags">
+            <span class="tag">Gorgias</span>
+            <span class="tag">Shopify</span>
+            <span class="tag">E-commerce</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="project alt">
+        <div class="project-cover">Merisant, Dubai</div>
+        <div class="project-body">
+          <div class="scope">Sales &amp; Marketing Assistant &middot; FMCG B2B, GCC region</div>
+          <h3>B2B sales and trade marketing across the GCC</h3>
+          <p>Supported the B2B sales team across retail and supermarket accounts in UAE and surrounding GCC markets. Contributed to product launches, market expansions, trade shows, and process improvements across sales, marketing, and operations.</p>
+          <div class="tags">
+            <span class="tag">FMCG</span>
+            <span class="tag">B2B Sales</span>
+            <span class="tag">GCC</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="tools">
+  <div class="container">
+    <div class="section-head">
+      <h2>Languages &amp; tools</h2>
+      <p>What I speak and what I work with day-to-day.</p>
+    </div>
+    <div class="lang-tools">
+      <div>
+        <h3>Languages</h3>
+        <div class="lang-list">
+          <div class="lang-row"><span>English</span><span class="lvl">Fluent &middot; Professional working</span></div>
+          <div class="lang-row"><span>Tagalog</span><span class="lvl">Native</span></div>
+          <div class="lang-row"><span>Spanish</span><span class="lvl">Conversational &middot; A2 to B1</span></div>
+        </div>
+      </div>
+      <div>
+        <h3>Tool stack</h3>
+        <div class="tools-list">
+          <span class="tag">Gorgias</span>
+          <span class="tag">Shopify Admin</span>
+          <span class="tag">Klaviyo</span>
+          <span class="tag">HubSpot</span>
+          <span class="tag">Amadeus GDS</span>
+          <span class="tag">Meta Business Suite</span>
+          <span class="tag">Meta Ads Manager</span>
+          <span class="tag">LinkedIn</span>
+          <span class="tag">TikTok</span>
+          <span class="tag">Mailchimp</span>
+          <span class="tag">Canva</span>
+          <span class="tag">CapCut</span>
+          <span class="tag">Figma</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="container">
+    <h2>Let's talk.</h2>
+    <p>Open to hybrid marketing, customer experience, or CX-marketing roles at DTC brands, SaaS companies, and agencies in Barcelona and across Spain.</p>
+    <div class="contact-buttons">
+      <a class="btn btn-primary" href="mailto:jaira.zurbito@gmail.com">Email me</a>
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/jaira-zurbito-6a9433342/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">&copy; Jaira Zurbito &middot; Barcelona, Spain</div>
+</footer>
+
+</body>
+</html>
